@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.3] - 2024-12-07
+
+### Added
+- Spotify auto-sync feature
+  - Automatic startup and shutdown with Spotify desktop app
+  - Process monitoring for Spotify
+  - System tray icon management
+- Autostart functionality for the application
+- Enhanced process management
+
+### Updated
+- Added new dependencies: `psutil` and `pywin32`
+- Improved application lifecycle management
+
+### Contributors
+- [@kunalsahu20](https://github.com/kunalsahu20)
+
 ## [1.0.1] - 2024-12-07
 
 ### Changed
