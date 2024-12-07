@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.2] - 2024-12-07
+## [1.0.1] - 2024-12-07
 
 ### Changed
 - Updated keyboard shortcuts to use Ctrl + Shift combinations:
