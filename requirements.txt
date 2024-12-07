@@ -1,3 +1,5 @@
 pynput
 pystray
 pillow
+psutil
+pywin32
