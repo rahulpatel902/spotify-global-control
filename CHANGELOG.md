@@ -8,14 +8,6 @@
   - Next Track: Now Ctrl + Shift + Right Arrow
   - Previous Track: Now Ctrl + Shift + Left Arrow
 
-## [1.0.1] - 2024-12-07
-
-### Changed
-- Simplified keyboard shortcuts to only use Alt key instead of Ctrl+Alt
-  - Play/Pause: Now Alt + P (was Ctrl + Alt + P)
-  - Next Track: Now Alt + Right Arrow (was Ctrl + Alt + Right Arrow)
-  - Previous Track: Now Alt + Left Arrow (was Ctrl + Alt + Left Arrow)
-
 ## [1.0.0] - 2024-12-07
 
 ### Added
