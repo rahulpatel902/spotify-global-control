@@ -1,93 +1,77 @@
 # Spotify Global Control
 
-A lightweight system tray application that provides global keyboard shortcuts to control Spotify playback on Windows.
-
-![Spotify Control Icon](assets/icon.png)
+A lightweight desktop application that provides global keyboard shortcuts and system tray controls for Spotify playback.
 
 ## Features
 
-- Global keyboard shortcuts that work from any application
-- Minimalist system tray interface with Spotify-themed icon
-- Zero configuration required - works out of the box
+- Global keyboard shortcuts for Spotify control
+- System tray icon with playback controls
+- Minimal resource usage
+- Automatic Spotify process detection
+- Comprehensive error handling and logging
 
-### Keyboard Shortcuts
+## Keyboard Shortcuts
 
-- `Ctrl + Alt + P`: Play/Pause
-- `Ctrl + Alt + Right Arrow`: Next Track
-- `Ctrl + Alt + Left Arrow`: Previous Track
+| Action | Shortcut |
+|--------|----------|
+| Play/Pause | Ctrl + Alt + Shift + P |
+| Next Track | Ctrl + Alt + Shift + Right |
+| Previous Track | Ctrl + Alt + Shift + Left |
 
-### System Tray Menu
+## System Requirements
 
-Right-click the Spotify icon in your system tray to access:
-- Play/Pause
-- Next Track
-- Previous Track
-- Exit
+- Windows OS
+- Spotify Desktop App
+- Python 3.12 or higher
 
 ## Installation
 
-### Prerequisites
+1. Download the latest release from the releases page
+2. Extract the zip file
+3. Run the executable
 
-- Windows OS
-- Python 3.8 or higher
-- Spotify Desktop App installed
+Or install from source:
 
-### Quick Install
-
-1. Download the latest release from the [Releases](https://github.com/YOUR_USERNAME/spotify-global-control/releases) page
-2. Extract the ZIP file
-3. Run `spotify_control.exe`
-
-### Install from Source
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/spotify-global-control.git
+git clone https://github.com/yourusername/spotify-global-control
 cd spotify-global-control
-```
-
-2. Create a virtual environment (recommended):
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
 pip install -r requirements.txt
-```
-
-4. Run the application:
-```bash
 python src/main.py
 ```
 
+## Dependencies
+
+- pynput
+- pystray
+- Pillow
+- pywin32
+- psutil
+
 ## Building from Source
 
-To build the executable yourself:
+To build the executable:
 
-1. Install pyinstaller:
 ```bash
-pip install pyinstaller
-```
-
-2. Build the executable:
-```bash
-pyinstaller --noconsole --onefile --add-data "assets/icon.png;assets" --icon=assets/icon.png src/main.py --name spotify_control
+python build.py
 ```
 
 The executable will be created in the `dist` directory.
 
+## Usage
+
+1. Run the application
+2. A Spotify icon will appear in your system tray
+3. Use the keyboard shortcuts or right-click the tray icon for controls
+4. The application will automatically detect when Spotify is running
+
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Feel free to open issues or submit pull requests for any improvements.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see LICENSE file for details
 
-## Acknowledgments
+## Version History
 
-- Icon created using PIL (Python Imaging Library)
-- Built with Python's pynput library for global keyboard shortcuts
-- Uses pystray for system tray functionality
+See [CHANGELOG.md](CHANGELOG.md) for version history and latest changes.

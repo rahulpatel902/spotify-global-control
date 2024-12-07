@@ -2,6 +2,8 @@ import pystray
 from PIL import Image
 import os
 import sys
+import webbrowser
+import logging
 
 def get_resource_path(relative_path):
     """Get the absolute path to a resource, works for dev and for PyInstaller"""
@@ -17,7 +19,11 @@ class SystemTray:
     def __init__(self, app_controller):
         self.app_controller = app_controller
         self.icon = None
+        self.setup_logging()
         self.setup_icon()
+
+    def setup_logging(self):
+        self.logger = logging.getLogger('SystemTray')
 
     def setup_icon(self):
         try:
@@ -27,27 +33,47 @@ class SystemTray:
             self.icon = pystray.Icon(
                 "spotify_control",
                 image,
-                "Spotify Global Control",
+                "Spotify Global Control\nRight-click for menu",
                 menu=self.create_menu()
             )
         except Exception as e:
-            print(f"Error setting up system tray icon: {e}")
-            print(f"Attempted icon path: {icon_path}")
+            self.logger.error(f"Error setting up system tray icon: {e}")
+            self.logger.error(f"Attempted icon path: {icon_path}")
             sys.exit(1)
 
     def create_menu(self):
+        """Create the system tray menu items"""
         return pystray.Menu(
             pystray.MenuItem(
-                "Play/Pause",
-                lambda: self.app_controller.spotify.toggle_playback()
+                "Playback Controls",
+                pystray.Menu(
+                    pystray.MenuItem(
+                        "Play/Pause",
+                        lambda: self.app_controller.spotify.toggle_playback(),
+                        default=True
+                    ),
+                    pystray.MenuItem(
+                        "Next Track",
+                        lambda: self.app_controller.spotify.next_track()
+                    ),
+                    pystray.MenuItem(
+                        "Previous Track",
+                        lambda: self.app_controller.spotify.previous_track()
+                    )
+                )
             ),
             pystray.MenuItem(
-                "Next Track",
-                lambda: self.app_controller.spotify.next_track()
+                "Keyboard Shortcuts",
+                pystray.Menu(
+                    pystray.MenuItem("Play/Pause (Ctrl+Alt+Shift+P)", lambda: None, enabled=False),
+                    pystray.MenuItem("Next Track (Ctrl+Alt+Shift+Right)", lambda: None, enabled=False),
+                    pystray.MenuItem("Previous Track (Ctrl+Alt+Shift+Left)", lambda: None, enabled=False)
+                )
             ),
+            pystray.Menu.SEPARATOR,
             pystray.MenuItem(
-                "Previous Track",
-                lambda: self.app_controller.spotify.previous_track()
+                "About",
+                lambda: webbrowser.open('https://github.com/YOUR_USERNAME/spotify-global-control')
             ),
             pystray.MenuItem(
                 "Exit",
