@@ -34,7 +34,7 @@ Right-click the Spotify icon in your system tray to access:
 
 ### Quick Install
 
-1. Download the latest release from the [Releases](https://github.com/YOUR_USERNAME/spotify-global-control/releases) page
+1. Download the latest release from the [Releases](https://github.com/rahulpatel902/spotify-global-control/releases) page
 2. Extract the ZIP file
 3. Run `spotify_control.exe`
 
@@ -42,7 +42,7 @@ Right-click the Spotify icon in your system tray to access:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/spotify-global-control.git
+git clone https://github.com/rahulpatel902/spotify-global-control.git
 cd spotify-global-control
 ```
 
