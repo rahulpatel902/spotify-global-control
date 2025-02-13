@@ -4,7 +4,7 @@ A lightweight system tray application that provides global keyboard shortcuts to
 
 ![Spotify Control Icon](assets/icon.png)
 
-## Features
+## Features 
 
 - Global keyboard shortcuts that work from any application
 - Minimalist system tray interface with Spotify-themed icon
