@@ -10,7 +10,7 @@ A lightweight system tray application that provides global keyboard shortcuts to
 - Minimalist system tray interface with Spotify-themed icon
 - Zero configuration required - works out of the box
 
-### Keyboard Shortcuts
+### Keyboard Shortcuts 
 
 - `Ctrl + Shift + P`: Play/Pause
 - `Ctrl + Shift + Right Arrow`: Next Track
