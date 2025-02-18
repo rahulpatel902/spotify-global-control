@@ -1,0 +1,179 @@
+##
+
+CREATE TABLE college ( cname VARCHAR2(20) NOT NULL, city VARCHAR2(20), address VARCHAR2(20), phone NUMBER(10), adate DATE );
+
+create table staff (sid number(2), sname varchar(20), saddress varchar(20), contact 
+number(10)); 
+
+create table staffjoin (sid number(2), cname varchar(20), dept varchar(20), doj date, 
+post varchar(20), salary number(10)); 
+
+create table teaching (sid number(2), class varchar(3), paperid number(2), fsession 
+date, tsession date); 
+
+create table subject (papered number(2), subject varchar(15), paperno number(2), 
+papername varchar(20)); 
+
+
+
+-- College table inserts
+INSERT INTO college (cname, city, address, phone, adate) VALUES
+('GDRCST', 'Bhilai', 'Kailash Nagar', 9924088927, '21-JUN-24'),
+('RCET', 'Bhilai', 'Kailash Nagar', 8325012276, '22-JUN-17');
+
+-- Staff table inserts
+INSERT INTO staff (sid, sname, saddress, contact) VALUES
+(1, 'Dr. Jyoti Upadhyay', 'Nehru nagar', 1122334455),
+(2, 'Mrs. Kavita', 'Risali', 8519292165);
+
+-- Staffjoin table inserts
+INSERT INTO staffjoin (sid, cname, dept, doj, post, salary) VALUES
+(1, 'GDRCST', 'CS', '12-JUL-95', 'HOD', 85000),
+(2, 'RCET', 'CS', '12-JUL-16', 'Assistant Professor', 50000);
+
+-- Teaching table inserts
+INSERT INTO teaching (sid, cla, paperid, fsession, tsession) VALUES
+(1, 'BCA', 1, '12-JUN-20', '15-JUL-21'),
+(2, 'BCA', 2, '15-JUL-20', '17-OCT-22');
+
+-- Subject table inserts
+INSERT INTO subject (paperid, subject, paperno, papername) VALUES
+(1, 'Maths', 1, 'Calculus'),
+(2, 'OS', 2, 'OS & Linux');
+
+
+
+select sname from staff where sid IN (select sid from teaching where paperid IN (select paperid from subject where subject IN ('OS', 'CN', 'C++', 'PC Software'))); 
+
+
+select sname, saddress from staff where sid=(select sid from staffjoin where 
+cname='GDRCST'); 
+
+
+
+##
+
+CREATE TABLE Enrollment ( enrollno INT PRIMARY KEY, name VARCHAR(50), gender CHAR(1), dob DATE, address VARCHAR(100), phone VARCHAR(15) ); 
+
+CREATE TABLE Admission ( admno INT PRIMARY KEY, enrollno INT, course  VARCHAR(50), yearsem VARCHAR(10), date DATE, cname VARCHAR(50), FOREIGN  KEY (enrollno) REFERENCES Enrollment(enrollno) ); 
+
+CREATE TABLE Colleges ( cname VARCHAR(50) PRIMARY KEY, city VARCHAR(50), address VARCHAR(100), phone VARCHAR(15), afdate DATE ); 
+
+CREATE TABLE Feestructure ( Course VARCHAR(50), city VARCHAR(50), address 
+VARCHAR(100), phone VARCHAR(15), afdate DATE ); 
+
+CREATE TABLE Payment ( billno INT PRIMARY KEY, adno INT, amount 
+DECIMAL(10, 2), pdate DATE, purpose VARCHAR(100), FOREIGN KEY (adno) REFERENCES Admission(admno) ); 
+
+
+
+INSERT INTO Enrollment (enrollno, name, gender, dob, address, phone) VALUES 
+(1001, 'John Doe', 'M', '15-MAY-2002', 'Bhilai', '9876543210'); 
+
+INSERT INTO Admission (admno, enrollno, course, yearsem, adate, cname) 
+VALUES (101, 1001, 'BCA', '1st Sem', '01-JUL-2023', 'BIT Bhilai'); 
+
+INSERT INTO Colleges (cname, city, address, phone, afdate) VALUES ('BIT Bhilai', 'Bhilai', 'Bhilai', '9876543210', ’10-MAY-1980'); 
+
+INSERT INTO Feestructure (Course, city, address, phone, afdate) VALUES ('BCA', 'Bhilai', 'Bhilai', '9876543210', '01-JUL-2023'); 
+
+INSERT INTO Payment (billno, adno, amount, pdate, purpose) VALUES (5001, 101, 1500.00, '10-JUL-2023', 'Tuition Fee'); 
+
+SELECT * FROM Admission WHERE EXTRACT(YEAR FROM adate) = EXTRACT(YEAR FROM SYSDATE) ORDER BY course;
+
+SELECT * FROM Colleges WHERE city = ‘Bhilai'; 
+
+
+
+
+
+#facto
+
+SQL>  ed factorial;
+
+SQL>  set serveroutput on;
+
+declare
+    n number(10);
+    fact number(20) := 1;
+    i number(10);
+begin
+    n := &n;
+
+    for i in 1..n loop
+        fact := fact * i;
+    end loop;
+
+    dbms_output.put_line('factorial of ' || n || ' is ' || fact);
+end;
+/
+
+SQL>  @factorial;
+
+
+
+#even
+
+declare
+    num number;
+begin
+    dbms_output.put_line('Enter a number:');
+    num := &num;
+    if mod(num, 2) = 0 then
+        dbms_output.put_line(num || ' is even.');
+    else
+        dbms_output.put_line(num || ' is odd.');
+    end if;
+end;
+/
+
+
+
+
+
+#arthematic
+
+
+declare
+    num1 number(5);
+    num2 number(5);
+    a number(5);
+    s number(5);
+    p number(5);
+    d number(5);
+begin
+    num1 := &num1;
+    num2 := &num2;
+    
+    a := num1 + num2;
+    dbms_output.put_line('The sum of ' || num1 || ' and ' || num2 || ' is ' || a);
+    
+    s := num1 - num2;
+    dbms_output.put_line('The difference of ' || num1 || ' and ' || num2 || ' is ' || s);
+    
+    p := num1 * num2;
+    dbms_output.put_line('The product of ' || num1 || ' and ' || num2 || ' is ' || p);
+    
+    d := num1 / num2;
+    dbms_output.put_line('The division of ' || num1 || ' and ' || num2 || ' is ' || d);
+end;
+/
+
+
+
+
+
+#table
+
+
+declare
+  n number(10);
+  i number(10);
+begin
+  n := &n;
+
+  for i in 1..10 loop
+    dbms_output.put_line(n || 'x' || i || '=' || (n * i));
+  end loop;
+end;
+/
