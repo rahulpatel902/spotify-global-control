@@ -1,5 +1,5 @@
 # Spotify Global Control
-
+ 
 A lightweight system tray application that provides global keyboard shortcuts to control Spotify playback on Windows.
 
 ![Spotify Control Icon](assets/icon.png)
